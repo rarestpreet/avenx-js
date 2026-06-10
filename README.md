@@ -1,52 +1,83 @@
-# Avenx-JS 🚀
+![Alternativtext](https://raw.githubusercontent.com/Avenx-JS/.github/refs/heads/main/media/core-header.jpeg)
 
-A lightweight, reactive JavaScript framework Proof-of-Concept featuring **Zero-Classname Styling** and a custom template compiler.
+# 🚀 Avenx-JS
 
-## Features
+A lightweight reactive JavaScript framework with a custom compiler, scoped styling, and built-in state management.
+Avenx-JS is an experimental frontend framework designed to simplify UI development by reducing boilerplate and introducing a compiler-driven component system with reactive state, scoped CSS, and CLI tooling.
 
-- **Reactivity**: Uses JavaScript Proxies to automatically re-render components when state changes.
-- **Unified Components**: Components are defined using a combination of HTML-like tags and JavaScript logic within `.component.js` files.
-- **Scoped Styling**: Styles are defined in `.component.css` files. Use the `<@css />` marker in your template to automatically assign unique hash-classes to your elements.
-- **Bridges**: Shared reactive states stored in `src/global/*.bridge.js`. They allow passing values between any components seamlessly.
-- **CLI Tooling**: A powerful CLI to initialize projects, generate components, and manage the build process.
+---
 
-## Installation
+## ✨ Why Avenx?
 
-To use Avenx-JS in your project, install it via npm:
+Modern frontend stacks often come with:
+
+- heavy tooling
+- large dependency trees
+- verbose state management
+- framework lock-in complexity
+
+Avenx explores a different approach:
+
+> Minimal setup. Reactive by default. Compiler-driven components.
+
+---
+
+## ⚡ Features
+
+### 🔄 Reactivity
+
+State is automatically tracked and re-rendered using JavaScript Proxies.
+
+### 🧩 Component System
+
+Components combine template, logic, and state in a single `.component.js` file.
+
+### 🎨 Scoped Styling
+
+CSS is automatically scoped using hashed class generation to avoid conflicts.
+
+### 🌐 Global State (Bridges)
+
+Shared reactive state across components via `.bridge.js`.
+
+### 🛠️ CLI Tooling
+
+Built-in CLI for project scaffolding and development workflow.
+
+---
+
+## 🚀 Quick Start
 
 ```bash
 npm install avenx-core
+
+npx avenx init
+npx avenx g component test
+npx avenx build
+npx avenx serve
 ```
+**Your app will run at:**
 
-## CLI Usage
+```text
+http://localhost:3000
+```
+---
 
-Avenx-JS comes with a CLI to streamline development. You can run it using `npx avenx`:
+## 🧠 Example
 
-- **Initialize a project**: `npx avenx init`
-- **Generate a component**: `npx avenx g <name>`
-- **Build the project**: `npx avenx build`
-- **Start dev server**: `npx avenx serve [port]`
-
-## Core Concepts
-
-### 1. Components (`.component.js`)
-Components contain your template, state, and logic.
+**Component**
 
 ```html
 <state count="0" />
 
-<action name="increment">
-    this.state.count++;
-</action>
-
-<h1 @click="increment">
-    <@css />
-    Count is {{ count }}
+<h1 @click="count++">
+    Count: {{ count }}
 </h1>
 ```
 
-### 2. Styling (`.component.css`)
-Styles are scoped using the `<@css>` block. You can also define global variables using `<@global>`.
+That's it - fully reactive UI without additional state libraries.
+
+**Styling**
 
 ```css
 <@global>
@@ -57,15 +88,16 @@ Styles are scoped using the `<@css>` block. You can also define global variables
     h1 {
         color: var(--primary-color);
         cursor: pointer;
-        &:hover { opacity: 0.8; }
+    }
+
+    h1:hover {
+        opacity: 0.8;
     }
 </@css>
 ```
 
-### 3. Bridges (Shared State)
-Bridges are files in `src/global/*.bridge.js` that export a default object. They are automatically available in all components.
+**Shared State (Bridges)**
 
-**Definition (`src/global/Auth.bridge.js`):**
 ```javascript
 export default {
     isLoggedIn: false,
@@ -73,30 +105,42 @@ export default {
 }
 ```
 
-**Usage in a component:**
+**Usage:**
 ```html
 <p>User: {{ AuthBridge.username }}</p>
 ```
 
-## Getting Started
+---
 
-1. **Scaffold a new project**:
-   ```bash
-   mkdir my-app && cd my-app
-   npx avenx init
-   ```
+## 📦 Installation
 
-2. **Start the development server**:
-   ```bash
-   npx avenx serve
-   ```
-   This will build your project and start a server at `http://localhost:3000` with hot-reloading.
+```bash
+npm install avenx-core
+```
 
-3. **Build for production**:
-   ```bash
-   npx avenx build
-   ```
-   The compiled assets will be located in the `dist/` directory.
+---
 
-## License
+## 📁 Core Concept
+
+Avenx-JS is built around 3 core ideas:
+- **Components as unified files**
+- **Reactivity via Proxy-based state tracking**
+- **Compiler-driven DOM updates**
+
+---
+
+## 📌 Status
+
+This project is currently a proof-of-concept framework and actively evolving.
+
+---
+
+## 📄 License
+
 MIT
+
+---
+
+## ⭐ Support
+
+If you find Avenx-JS useful, consider leaving a star on GitHub - it helps the project grow.
