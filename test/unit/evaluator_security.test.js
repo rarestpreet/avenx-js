@@ -51,16 +51,16 @@ try {
   // Accessing prototype/constructor on scoped object should throw
   assert.throws(() => {
     evaluator.evaluateExpression('user.constructor', scope);
-  }, /blocked for security reasons/);
+  }, /AVX_R15/);
 
   assert.throws(() => {
     evaluator.evaluateExpression('user.__proto__', scope);
-  }, /blocked for security reasons/);
+  }, /AVX_R15/);
 
   // Accessing constructor on primitive value return should throw
   assert.throws(() => {
     evaluator.evaluateExpression('user.name.constructor', scope);
-  }, /blocked for security reasons/);
+  }, /AVX_R15/);
 
   // Constructor access on inline literals should throw if evaluated via scope
   // Wait, inline literal like `({}).constructor` in expression `({}).constructor`
@@ -69,16 +69,16 @@ try {
   // E.g. `(() => ({}))().constructor`
   assert.throws(() => {
     evaluator.evaluateExpression('(() => ({}))().constructor', {});
-  }, /blocked for security reasons/);
+  }, /AVX_R15/);
 
   // Assigning blocked properties should throw
   assert.throws(() => {
     evaluator.executeStatement('user.constructor = null', scope);
-  }, /blocked for security reasons/);
+  }, /AVX_R15/);
 
   assert.throws(() => {
     evaluator.executeStatement('user.__proto__ = null', scope);
-  }, /blocked for security reasons/);
+  }, /AVX_R15/);
 
   console.log('    ✅ Prototype pollution and constructor access blocked.');
 
@@ -97,7 +97,7 @@ try {
   // Since it is wrapped, accessing constructor on it must throw!
   assert.throws(() => {
     evaluator.evaluateExpression('items.slice(0).constructor', listScope);
-  }, /blocked for security reasons/);
+  }, /AVX_R15/);
 
   console.log('    ✅ Function return values recursively sandboxed.');
 
