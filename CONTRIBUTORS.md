@@ -35,6 +35,7 @@ Every contribution — whether code, documentation, or ideas — helps move the 
 - [@finiteskills](https://github.com/finiteskills)
 - [@ajay-02-06](https://github.com/ajay-02-06)
 - [@mayank-gariya](https://github.com/mayank-gariya)
+- [@kernelpanic888](https://github.com/kernelpanic888)
 
 ---
 
