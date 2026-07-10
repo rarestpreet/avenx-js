@@ -67,6 +67,10 @@ export default class AuthGuard extends AvenxGuard {
 }
 ```
 
+:::warning
+Redirect paths must start with a `#` prefix to ensure router prefix and namespace settings are respected.
+:::
+
 Map guards to routes in your application router initialization:
 
 ```javascript
